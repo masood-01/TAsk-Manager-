@@ -1,0 +1,22 @@
+# Railway Build & Deploy Configuration for Frontend
+
+[build]
+builder = "nixpacks"
+
+[build.buildInputs]
+node = "18"
+
+[build.nixpkgs]
+# Add nginx for production serving
+packages = ["nginx"]
+
+[deploy]
+# Build the app and serve with nginx
+startCommand = "npm run build && npm install -g serve && serve -s dist -l 3000"
+
+# Alternative for nginx:
+# startCommand = "npm run build && nginx -g 'daemon off;' -c /etc/nginx/nginx.conf"
+
+# Environment variables are managed in Railway dashboard
+# Required variables:
+# - VITE_API_URL: Backend API URL (e.g., https://your-backend.railway.app)

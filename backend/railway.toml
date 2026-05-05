@@ -1,0 +1,22 @@
+# Railway Build & Deploy Configuration
+
+[build]
+# Use nixpacks for automatic dependency detection
+builder = "nixpacks"
+
+[build.buildInputs]
+node = "18"
+
+[deploy]
+# Start the backend server
+startCommand = "node index.js"
+
+# Environment variables are managed in Railway dashboard
+# Required variables:
+# - MONGODB_URI: MongoDB connection string
+# - JWT_SECRET: JWT secret key
+# - NODE_ENV: production
+# - FRONTEND_URL: Frontend URL
+
+[env]
+NODE_ENV = "production"
